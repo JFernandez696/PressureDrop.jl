@@ -10,6 +10,10 @@ os:
   - osx
   - windows
 
+branches:
+  only:
+    - master
+
 jobs:
   include:
     - stage: "Documentation"

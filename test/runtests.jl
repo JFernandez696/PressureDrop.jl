@@ -1,11 +1,11 @@
+#test flags:
+const run_benchmarks = true
 const test_plots = false
-const devmode = false #test only subsets
-const devtests = ("test_wrappers.jl") #filenames to run for limited-subset tests
-#using Pkg; Pkg.test()
+const devmode = true #test only subsets
+const devtests = ("test_integration_scenario.jl") #tuple of filenames to run for limited-subset tests
 
 using Test
 using PressureDrop
-
 
 if test_plots #note that doc generation on deployment implicitly tests all plotting functions
     using Gadfly
@@ -25,4 +25,9 @@ else
     include("test_integration_scenario.jl")
     include("test_wrappers.jl")
     include("test_regressions.jl")
+end
+
+if run_benchmarks
+    using BenchmarkTools
+    include("runbenchmarks.jl")
 end

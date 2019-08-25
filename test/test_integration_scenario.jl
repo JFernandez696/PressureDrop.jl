@@ -1,3 +1,5 @@
+# end to end integration testing
+
 # helper function for testing to load the example results
 function load_example(path, ncol, delim = ',', skiplines = 1) #make sure to use nscenario+1 cols
 
@@ -46,7 +48,6 @@ function match_example(well::Wellbore, example::Array{Float64,2})
 
     return output
 end
-
 
 #%% general parameters
 dp_est = 10 #psi
