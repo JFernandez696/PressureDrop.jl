@@ -1,5 +1,6 @@
 # run benchmarks on integration scenarios
 
+BenchmarkTools.DEFAULT_PARAMETERS.seconds = timelimit
 Base.CoreLogging.disable_logging(Base.CoreLogging.Info) #remove info-level outputs to avoid console spam
 @warn "Setting up integration benchmarks..."
 
@@ -38,7 +39,6 @@ end
 temps = [create_temps(s) for s in scenarios]
 temp_profiles = NamedTuple{scenarios}(temps) #temp profiles labelled by scenario
 
-
 @warn "Benchmarking Beggs & Brill..."
 corr = BeggsAndBrill
 timings = Array{Float64,1}(undef, length(scenarios))
@@ -50,11 +50,12 @@ for (index, scenario) in enumerate(scenarios)
     GLR = parameters[:GLR][scenario]
     temps = temp_profiles[scenario]
 
-    timings[index] = @elapsed begin traverse_topdown(wellbore = testwell, roughness = roughness, temperatureprofile = temps,
+    timings[index] = @belapsed begin traverse_topdown(wellbore = testwell, roughness = roughness, temperatureprofile = $temps,
                                 pressurecorrelation = corr, dp_est = dp_est, error_tolerance = error_tolerance,
-                                q_o = q_o, q_w = q_w, GLR = GLR, APIoil = oil_API, sg_water = sg_water, sg_gas = sg_gas,
-                                WHP = outlet_pressure, molFracCO2 = CO2) 
+                                q_o = $q_o, q_w = $q_w, GLR = $GLR, APIoil = oil_API, sg_water = sg_water, sg_gas = sg_gas,
+                                WHP = outlet_pressure, molFracCO2 = CO2)
                         end
+
 end
 
 @warn "$corr timing | min: $(minimum(timings)) s | max: $(maximum(timings)) s | mean: $(sum(timings)/length(timings)) s"
@@ -71,10 +72,10 @@ for (index, scenario) in enumerate(scenarios)
     GLR = parameters[:GLR][scenario]
     temps = temp_profiles[scenario]
 
-    timings[index] = @elapsed begin traverse_topdown(wellbore = testwell, roughness = roughness, temperatureprofile = temps,
+    timings[index] = @belapsed begin traverse_topdown(wellbore = testwell, roughness = roughness, temperatureprofile = $temps,
                                 pressurecorrelation = corr, dp_est = dp_est, error_tolerance = error_tolerance,
-                                q_o = q_o, q_w = q_w, GLR = GLR, APIoil = oil_API, sg_water = sg_water, sg_gas = sg_gas,
-                                WHP = outlet_pressure, molFracCO2 = CO2) 
+                                q_o = $q_o, q_w = $q_w, GLR = $GLR, APIoil = oil_API, sg_water = sg_water, sg_gas = sg_gas,
+                                WHP = outlet_pressure, molFracCO2 = CO2)
                         end
 end
 

@@ -1,5 +1,5 @@
 #test flags:
-const run_benchmarks = true
+const run_benchmarks = true; timelimit = 5 #time limit in seconds for each benchmarking process
 const test_plots = false
 const devmode = true #test only subsets
 const devtests = ("test_integration_scenario.jl") #tuple of filenames to run for limited-subset tests
