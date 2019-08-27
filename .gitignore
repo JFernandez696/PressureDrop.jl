@@ -1,8 +1,10 @@
+docs/build
+extras/
+Manifest.toml
 references/
 TODO.txt
 *.svg
 *.pf8
-Manifest.toml
 debug_highGLR.jl
 test.csv
 TODO2.txt
@@ -10,8 +12,7 @@ spare.jl
 travis debug.txt
 tangtemps_temp.jl
 MuEtAl_temp.jl
-docs/build
-extras/
 buildnotes.txt
 bulkcalcs.jl
 259H.jl
+NLsolve_test.jl

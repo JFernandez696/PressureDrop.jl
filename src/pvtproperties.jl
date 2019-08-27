@@ -110,7 +110,7 @@ function KareemEtAlZFactor(pressurePseudoCritical, tempPseudoCriticalRankine, ps
   T_pr = (tempF + 459.67)/tempPseudoCriticalRankine
 
   if !(0.2 ≤ P_pr ≤ 15) | !(1.15 ≤ T_pr ≤ 3)
-    @info "Using Kareem et al Z-factor correlation with values outside of 0.2 ≤ P_pr ≤ 15, 1.15 ≤ T_pr ≤ 3."
+    @info "Using Kareem et al Z-factor correlation with values outside of 0.2 ≤ P_pr ≤ 15, 1.15 ≤ T_pr ≤ 3. \n (P_pr: $P_pr, T_pr: $T_pr)"
   end
 
   a1 = 0.317842

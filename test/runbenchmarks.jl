@@ -5,7 +5,7 @@ Base.CoreLogging.disable_logging(Base.CoreLogging.Info) #remove info-level outpu
 @warn "Setting up integration benchmarks..."
 
 #%% general parameters
-dp_est = 10 #psi
+dp_est = 10. #psi
 error_tolerance = 0.1 #psi
 outlet_pressure = 220 - 14.65 #WHP in psig
 oil_API = 35
